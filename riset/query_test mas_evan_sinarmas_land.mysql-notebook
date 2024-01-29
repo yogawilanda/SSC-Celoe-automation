@@ -1,0 +1,444 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\ncreate DATABASE test_mas_evan\nuse test_mas_evan\nCREATE TABLE orders (\n    code  VARCHAR(10) PRIMARY KEY,\n    create_date DATE,\n    updated_date DATE\n);\n\n\nCREATE TABLE order_statuses (\n    order_code varchar(100) REFERENCES orders(code),\n    status varchar(100),\n    created_date date\n);\n\nselect * from orders\nINSERT INTO orders (code, create_date, updated_date) VALUES\n('AAA', '2024-01-06', '2024-01-07'),\n('BBB', '2024-01-06', '2024-01-08'),\n('CCC', '2024-01-08', '2024-01-09');\nINSERT INTO order_statuses (order_code, status, created_date) VALUES\n('AAA', 'Submitted', '2024-01-06'),\n('AAA', 'On Progress', '2024-01-07'),\n('AAA', 'Accepted', '2024-01-07'),\n('BBB', 'Submitted', '2024-01-06'),\n('BBB', 'Rejected', '2024-01-08'),\n('CCC', 'Submitted', '2024-01-08'),\n('CCC', 'On Progress', '2024-01-08'),\n('CCC', 'Accepted', '2024-01-09');\n\nSELECT\n    o.code,\n    os.status,\n    os.created_date AS last_update\nFROM\n    orders o\nJOIN\n    order_statuses os ON o.code = os.order_code\nWHERE\n    os.created_date = (\n        SELECT MAX(created_date)\n        FROM order_statuses\n        WHERE order_code = o.code\n    );\n\n\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 39,
+                    "column": 40
+                },
+                "position": {
+                    "lineNumber": 39,
+                    "column": 40
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 18,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -3
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "b08466f1-d4d9-4a7b-8a21-1f73b87e333c",
+                            "content": "OK, 1 row affected in 7.997ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 29
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 4,
+                            "index": 0,
+                            "resultId": "66051bf4-4577-4692-ad36-4526b1452d3f",
+                            "content": "OK, 0 records retrieved in 1.001ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 17
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 9,
+                "language": "mysql",
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 103
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 103,
+                            "length": 1
+                        },
+                        "contentStart": 102,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 10,
+                "end": 15,
+                "language": "mysql",
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 133
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 133,
+                            "length": 0
+                        },
+                        "contentStart": 132,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 16,
+                "end": 16,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1366): ClassicSession.run_sql: Incorrect integer value: 'AAA' for column 'code' at row 1",
+                            "language": "ansi"
+                        },
+                        {
+                            "type": 4,
+                            "index": 1,
+                            "resultId": "ba8ba35d-d0dd-4892-8603-bff982f4302a",
+                            "content": "OK, 8 rows affected in 1.998ms"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": -1,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 17,
+                "end": 17,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "96ef4ec3-8db0-4cce-f93e-d0f4b01e122e"
+                    ]
+                },
+                "currentHeight": 36,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "13a0bbcd-630b-4cb6-9e53-2fa480176805",
+                    "resultId": "96ef4ec3-8db0-4cce-f93e-d0f4b01e122e",
+                    "rows": [
+                        {
+                            "0": "AAA",
+                            "1": "2024-01-06",
+                            "2": "2024-01-07"
+                        },
+                        {
+                            "0": "BBB",
+                            "1": "2024-01-06",
+                            "2": "2024-01-08"
+                        },
+                        {
+                            "0": "CCC",
+                            "1": "2024-01-08",
+                            "2": "2024-01-09"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "code",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "create_date",
+                            "field": "1",
+                            "dataType": {
+                                "type": 28
+                            }
+                        },
+                        {
+                            "title": "updated_date",
+                            "field": "2",
+                            "dataType": {
+                                "type": 28
+                            }
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0s"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "select * from orders"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 18,
+                "end": 30,
+                "language": "mysql",
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 170
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 170,
+                            "length": 358
+                        },
+                        "contentStart": 171,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 31,
+                "end": 45,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "f04a721c-7b59-4369-baeb-b935aff4d949"
+                    ]
+                },
+                "currentHeight": 163.375,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 272
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "13a0bbcd-630b-4cb6-9e53-2fa480176805",
+                    "resultId": "f04a721c-7b59-4369-baeb-b935aff4d949",
+                    "rows": [
+                        {
+                            "0": "AAA",
+                            "1": "On Progress",
+                            "2": "2024-01-07"
+                        },
+                        {
+                            "0": "AAA",
+                            "1": "Accepted",
+                            "2": "2024-01-07"
+                        },
+                        {
+                            "0": "BBB",
+                            "1": "Rejected",
+                            "2": "2024-01-08"
+                        },
+                        {
+                            "0": "CCC",
+                            "1": "Accepted",
+                            "2": "2024-01-09"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "code",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "status",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "last_update",
+                            "field": "2",
+                            "dataType": {
+                                "type": 28
+                            }
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 1ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "\nSELECT\n    o.code,\n    os.status,\n    os.created_date AS last_update\nFROM\n    orders o\nJOIN\n    order_statuses os ON o.code = os.order_code\nWHERE\n    os.created_date = (\n        SELECT MAX(created_date)\n        FROM order_statuses\n        WHERE order_code = o.code\n    )"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 46,
+                "end": 39,
+                "language": "mysql",
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 133
+                        },
+                        "contentStart": -1,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
